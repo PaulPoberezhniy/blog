@@ -2,26 +2,36 @@
 
 namespace Bars\Blog\Controller;
 
+use Bars\Blog\Model\PostFactory;
+use Magento\Framework\App\ActionFactory;
+use Magento\Framework\App\RequestInterface;
+use Magento\Framework\App\ResponseInterface;
+use Magento\Framework\App\RouterInterface;
+use Magento\Framework\Event\ManagerInterface;
+use Magento\Framework\Url;
+use Magento\Framework\UrlInterface;
+
 /**
- * Cms Controller Router
- * @author      Magento Core Team <core@magentocommerce.com>
+ * Class Router
+ * @package Bars\Blog\Controller
  */
-class Router implements \Magento\Framework\App\RouterInterface
+class Router implements RouterInterface
 {
+    const BLOG_NAME = 'blog';
     /**
-     * @var \Magento\Framework\App\ActionFactory
+     * @var ActionFactory
      */
     protected $actionFactory;
 
     /**
      * Event manager
-     * @var \Magento\Framework\Event\ManagerInterface
+     * @var ManagerInterface
      */
     protected $_eventManager;
 
     /**
      * Post factory
-     * @var \Bars\Blog\Model\PostFactory
+     * @var PostFactory
      */
     protected $_postFactory;
 
@@ -33,29 +43,29 @@ class Router implements \Magento\Framework\App\RouterInterface
 
     /**
      * Url
-     * @var \Magento\Framework\UrlInterface
+     * @var UrlInterface
      */
     protected $_url;
 
     /**
      * Response
-     * @var \Magento\Framework\App\ResponseInterface
+     * @var ResponseInterface
      */
     protected $_response;
 
     /**
-     * @param \Magento\Framework\App\ActionFactory $actionFactory
-     * @param \Magento\Framework\Event\ManagerInterface $eventManager
-     * @param \Magento\Framework\UrlInterface $url
-     * @param \Bars\Blog\Model\PostFactory $postFactory
-     * @param \Magento\Framework\App\ResponseInterface $response
+     * @param ActionFactory $actionFactory
+     * @param ManagerInterface $eventManager
+     * @param UrlInterface $url
+     * @param PostFactory $postFactory
+     * @param ResponseInterface $response
      */
     public function __construct(
-        \Magento\Framework\App\ActionFactory $actionFactory,
-        \Magento\Framework\Event\ManagerInterface $eventManager,
-        \Magento\Framework\UrlInterface $url,
-        \Bars\Blog\Model\PostFactory $postFactory,
-        \Magento\Framework\App\ResponseInterface $response
+        ActionFactory $actionFactory,
+        ManagerInterface $eventManager,
+        UrlInterface $url,
+        PostFactory $postFactory,
+        ResponseInterface $response
     )
     {
         $this->actionFactory = $actionFactory;
@@ -66,14 +76,12 @@ class Router implements \Magento\Framework\App\RouterInterface
     }
 
     /**
-     * Validate and Match Cms Page and modify request
-     *
-     * @param \Magento\Framework\App\RequestInterface $request
-     * @return bool
+     * @param RequestInterface $request
+     * @return \Magento\Framework\App\ActionInterface|null
      */
-    public function match(\Magento\Framework\App\RequestInterface $request)
+    public function match(RequestInterface $request)
     {
-        $url_key = trim($request->getPathInfo(), '/blog/');
+        $url_key = trim($request->getPathInfo(), DIRECTORY_SEPARATOR. self::BLOG_NAME. DIRECTORY_SEPARATOR);
         $url_key = rtrim($url_key, '/');
 
         /** @var \Bars\Blog\Model\Post $post */
@@ -83,8 +91,8 @@ class Router implements \Magento\Framework\App\RouterInterface
             return null;
         }
 
-        $request->setModuleName('blog')->setControllerName('view')->setActionName('index')->setParam('post_id', $post_id);
-        $request->setAlias(\Magento\Framework\Url::REWRITE_REQUEST_PATH_ALIAS, $url_key);
+        $request->setModuleName(self::BLOG_NAME)->setControllerName('view')->setActionName('index')->setParam('post_id', $post_id);
+        $request->setAlias(Url::REWRITE_REQUEST_PATH_ALIAS, $url_key);
 
         return $this->actionFactory->create('Magento\Framework\App\Action\Forward');
     }

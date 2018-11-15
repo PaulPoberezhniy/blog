@@ -2,23 +2,25 @@
 
 namespace Bars\Blog\Block\Adminhtml\Post;
 
-class Edit extends \Magento\Backend\Block\Widget\Form\Container
+use Magento\Backend\Block\Widget\Context;
+use Magento\Backend\Block\Widget\Form\Container;
+use Magento\Framework\Registry;
+
+class Edit extends Container
 {
     /**
-     * Core registry
-     *
-     * @var \Magento\Framework\Registry
+     * @var Registry
      */
     protected $_coreRegistry = null;
 
     /**
-     * @param \Magento\Backend\Block\Widget\Context $context
-     * @param \Magento\Framework\Registry $registry
+     * @param Context $context
+     * @param Registry $registry
      * @param array $data
      */
     public function __construct(
-        \Magento\Backend\Block\Widget\Context $context,
-        \Magento\Framework\Registry $registry,
+        Context $context,
+        Registry $registry,
         array $data = []
     )
     {
@@ -27,8 +29,6 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
     }
 
     /**
-     * Initialize blog post edit block
-     *
      * @return void
      */
     protected function _construct()
@@ -66,8 +66,6 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
     }
 
     /**
-     * Retrieve text for header element depending on loaded post
-     *
      * @return \Magento\Framework\Phrase
      */
     public function getHeaderText()
@@ -80,8 +78,6 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
     }
 
     /**
-     * Check permission for passed action
-     *
      * @param string $resourceId
      * @return bool
      */
@@ -91,9 +87,6 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
     }
 
     /**
-     * Getter of url for "Save and Continue" button
-     * tab_id will be replaced by desired by JS later
-     *
      * @return string
      */
     protected function _getSaveAndContinueUrl()

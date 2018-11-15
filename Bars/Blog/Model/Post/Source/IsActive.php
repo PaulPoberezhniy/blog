@@ -1,7 +1,10 @@
 <?php
+
 namespace Bars\Blog\Model\Post\Source;
 
-class IsActive implements \Magento\Framework\Data\OptionSourceInterface
+use Magento\Framework\Data\OptionSourceInterface;
+
+class IsActive implements OptionSourceInterface
 {
     /**
      * @var \Bars\Blog\Model\Post

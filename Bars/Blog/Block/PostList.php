@@ -4,24 +4,26 @@ namespace Bars\Blog\Block;
 
 use Bars\Blog\Api\Data\PostInterface;
 use Bars\Blog\Model\ResourceModel\Post\Collection as PostCollection;
+use Bars\Blog\Model\ResourceModel\Post\CollectionFactory;
+use Magento\Framework\DataObject\IdentityInterface;
+use Magento\Framework\View\Element\Template;
+use Magento\Framework\View\Element\Template\Context;
 
-class PostList extends \Magento\Framework\View\Element\Template implements
-    \Magento\Framework\DataObject\IdentityInterface
+class PostList extends Template implements IdentityInterface
 {
     /**
-     * @var \Bars\Blog\Model\ResourceModel\Post\CollectionFactory
+     * @var CollectionFactory
      */
     protected $_postCollectionFactory;
 
     /**
-     * Construct
-     * @param \Magento\Framework\View\Element\Template\Context $context
-     * @param \Bars\Blog\Model\ResourceModel\Post\CollectionFactory $postCollectionFactory ,
+     * @param Context $context
+     * @param CollectionFactory $postCollectionFactory ,
      * @param array $data
      */
     public function __construct(
-        \Magento\Framework\View\Element\Template\Context $context,
-        \Bars\Blog\Model\ResourceModel\Post\CollectionFactory $postCollectionFactory,
+        Context $context,
+        CollectionFactory $postCollectionFactory,
         array $data = []
     )
     {
@@ -48,7 +50,6 @@ class PostList extends \Magento\Framework\View\Element\Template implements
     }
 
     /**
-     * Return identifiers for produced content
      * @return array
      */
     public function getIdentities()

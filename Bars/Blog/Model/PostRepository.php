@@ -9,7 +9,6 @@ use Bars\Blog\Api\PostRepositoryInterface;
 use Bars\Blog\Model\ResourceModel\Post as PostResource;
 use Bars\Blog\Model\ResourceModel\Post\Collection as PostCollection;
 use Bars\Blog\Model\ResourceModel\Post\CollectionFactory as PostCollectionFactory;
-use Bars\Blog\Model\PostFactory;
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Exception\StateException;

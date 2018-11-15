@@ -2,21 +2,28 @@
 
 namespace Bars\Blog\Block;
 
-class PostView extends \Magento\Framework\View\Element\Template implements
-    \Magento\Framework\DataObject\IdentityInterface
-{
+use Bars\Blog\Model\Post;
+use Bars\Blog\Model\PostFactory;
+use Magento\Framework\DataObject\IdentityInterface;
+use Magento\Framework\View\Element\Template;
+use Magento\Framework\View\Element\Template\Context;
 
+/**
+ * Class PostView
+ * @package Bars\Blog\Block
+ */
+class PostView extends Template implements IdentityInterface
+{
     /**
-     * Construct
-     * @param \Magento\Framework\View\Element\Template\Context $context
-     * @param \Bars\Blog\Model\Post $post
-     * @param \Bars\Blog\Model\PostFactory $postFactory
+     * @param Context $context
+     * @param Post $post
+     * @param PostFactory $postFactory
      * @param array $data
      */
     public function __construct(
-        \Magento\Framework\View\Element\Template\Context $context,
-        \Bars\Blog\Model\Post $post,
-        \Bars\Blog\Model\PostFactory $postFactory,
+        Context $context,
+        Post $post,
+        PostFactory $postFactory,
         array $data = []
     )
     {
@@ -26,13 +33,13 @@ class PostView extends \Magento\Framework\View\Element\Template implements
     }
 
     /**
-     * @return \Bars\Blog\Model\Post
+     * @return Post
      */
     public function getPost()
     {
         if (!$this->hasData('post')) {
             if ($this->getPostId()) {
-                /** @var \Bars\Blog\Model\Post $page */
+                /** @var Post $page */
                 $post = $this->_postFactory->create();
             } else {
                 $post = $this->_post;
@@ -48,7 +55,7 @@ class PostView extends \Magento\Framework\View\Element\Template implements
      */
     public function getIdentities()
     {
-        return [\Bars\Blog\Model\Post::CACHE_TAG . '_' . $this->getPost()->getId()];
+        return [Post::CACHE_TAG . '_' . $this->getPost()->getId()];
     }
 
 }

@@ -1,8 +1,11 @@
 <?php namespace Bars\Blog\Helper;
 
 use Magento\Framework\App\Action\Action;
+use Magento\Framework\App\Helper\AbstractHelper;
+use Magento\Framework\App\Helper\Context;
+use Magento\Framework\View\Result\PageFactory;
 
-class Post extends \Magento\Framework\App\Helper\AbstractHelper
+class Post extends AbstractHelper
 {
 
     /**
@@ -11,21 +14,21 @@ class Post extends \Magento\Framework\App\Helper\AbstractHelper
     protected $_post;
 
     /**
-     * @var \Magento\Framework\View\Result\PageFactory
+     * @var PageFactory
      */
     protected $resultPageFactory;
 
     /**
      * Constructor
-     * @param \Magento\Framework\App\Helper\Context $context
+     * @param Context $context
      * @param \Bars\Blog\Model\Post $post
-     * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
+     * @param PageFactory $resultPageFactory
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
     public function __construct(
-        \Magento\Framework\App\Helper\Context $context,
+        Context $context,
         \Bars\Blog\Model\Post $post,
-        \Magento\Framework\View\Result\PageFactory $resultPageFactory
+        PageFactory $resultPageFactory
     )
     {
         $this->_post = $post;
