@@ -30,8 +30,8 @@ class Index extends Action
     public function execute()
     {
         $post_id = $this->getRequest()->getParam('post_id', $this->getRequest()->getParam('id', false));
-        /** @var \Bars\Blog\Helper\Post $post_helper */
-        $post_helper = $this->_objectManager->get('Bars\Blog\Helper\Post');
+        /** @var \Bars\Blog\Helper\PostPageProvider $post_helper */
+        $post_helper = $this->_objectManager->get('Bars\Blog\Helper\PostPageProvider');
         $result_page = $post_helper->prepareResultPost($this, $post_id);
         if (!$result_page) {
             $resultForward = $this->resultForwardFactory->create();

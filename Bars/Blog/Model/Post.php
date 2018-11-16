@@ -107,8 +107,7 @@ class Post extends AbstractModel implements PostInterface, IdentityInterface
     }
 
     /**
-     * Get URL Key
-     * @return string
+     * @inheritdoc
      */
     public function getUrlKey()
     {
@@ -116,9 +115,7 @@ class Post extends AbstractModel implements PostInterface, IdentityInterface
     }
 
     /**
-     * Return the desired URL of a post
-     *  eg: /blog/view/index/id/1/
-     * @return string
+     * @inheritdoc
      */
     public function getUrl()
     {
@@ -126,8 +123,7 @@ class Post extends AbstractModel implements PostInterface, IdentityInterface
     }
 
     /**
-     * Get title
-     * @return string|null
+     * @inheritdoc
      */
     public function getTitle()
     {
@@ -135,8 +131,7 @@ class Post extends AbstractModel implements PostInterface, IdentityInterface
     }
 
     /**
-     * Get content
-     * @return string|null
+     * @inheritdoc
      */
     public function getContent()
     {
@@ -144,8 +139,7 @@ class Post extends AbstractModel implements PostInterface, IdentityInterface
     }
 
     /**
-     * Get creation time
-     * @return string|null
+     * @inheritdoc
      */
     public function getCreationTime()
     {
@@ -153,8 +147,7 @@ class Post extends AbstractModel implements PostInterface, IdentityInterface
     }
 
     /**
-     * Get update time
-     * @return string|null
+     * @inheritdoc
      */
     public function getUpdateTime()
     {
@@ -162,8 +155,7 @@ class Post extends AbstractModel implements PostInterface, IdentityInterface
     }
 
     /**
-     * Is active
-     * @return bool|null
+     * @inheritdoc
      */
     public function isActive()
     {
@@ -171,9 +163,7 @@ class Post extends AbstractModel implements PostInterface, IdentityInterface
     }
 
     /**
-     * Set ID
-     * @param int $id
-     * @return \Bars\Blog\Api\Data\PostInterface
+     * @inheritdoc
      */
     public function setId($id)
     {
@@ -181,9 +171,7 @@ class Post extends AbstractModel implements PostInterface, IdentityInterface
     }
 
     /**
-     * Set URL Key
-     * @param string $url_key
-     * @return \Bars\Blog\Api\Data\PostInterface
+     * @inheritdoc
      */
     public function setUrlKey($url_key)
     {
@@ -191,9 +179,7 @@ class Post extends AbstractModel implements PostInterface, IdentityInterface
     }
 
     /**
-     * Set title
-     * @param string $title
-     * @return \Bars\Blog\Api\Data\PostInterface
+     * @inheritdoc
      */
     public function setTitle($title)
     {
@@ -201,9 +187,7 @@ class Post extends AbstractModel implements PostInterface, IdentityInterface
     }
 
     /**
-     * Set content
-     * @param string $content
-     * @return \Bars\Blog\Api\Data\PostInterface
+     * @inheritdoc
      */
     public function setContent($content)
     {
@@ -211,9 +195,7 @@ class Post extends AbstractModel implements PostInterface, IdentityInterface
     }
 
     /**
-     * Set creation time
-     * @param string $creation_time
-     * @return \Bars\Blog\Api\Data\PostInterface
+     * @inheritdoc
      */
     public function setCreationTime($creation_time)
     {
@@ -221,9 +203,7 @@ class Post extends AbstractModel implements PostInterface, IdentityInterface
     }
 
     /**
-     * Set update time
-     * @param string $update_time
-     * @return \Bars\Blog\Api\Data\PostInterface
+     * @inheritdoc
      */
     public function setUpdateTime($update_time)
     {
@@ -231,9 +211,7 @@ class Post extends AbstractModel implements PostInterface, IdentityInterface
     }
 
     /**
-     * Set is active
-     * @param int|bool $is_active
-     * @return \Bars\Blog\Api\Data\PostInterface
+     * @inheritdoc
      */
     public function setIsActive($is_active)
     {

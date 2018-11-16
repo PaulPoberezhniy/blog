@@ -5,7 +5,7 @@ use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
 use Magento\Framework\View\Result\PageFactory;
 
-class Post extends AbstractHelper
+class PostPageProvider extends AbstractHelper
 {
 
     /**
