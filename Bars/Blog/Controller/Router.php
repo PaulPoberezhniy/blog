@@ -4,20 +4,17 @@ namespace Bars\Blog\Controller;
 
 use Bars\Blog\Model\PostFactory;
 use Magento\Framework\App\ActionFactory;
-use Magento\Framework\App\RequestInterface;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\App\RouterInterface;
 use Magento\Framework\Event\ManagerInterface;
-use Magento\Framework\Url;
 use Magento\Framework\UrlInterface;
 
 /**
- * Class Router
- * @package Bars\Blog\Controller
+ * Cms Controller Router
+ * @author      Magento Core Team <core@magentocommerce.com>
  */
 class Router implements RouterInterface
 {
-    const BLOG_NAME = 'blog';
     /**
      * @var ActionFactory
      */
@@ -76,12 +73,14 @@ class Router implements RouterInterface
     }
 
     /**
-     * @param RequestInterface $request
-     * @return \Magento\Framework\App\ActionInterface|null
+     * Validate and Match Cms Page and modify request
+     *
+     * @param \Magento\Framework\App\RequestInterface $request
+     * @return bool
      */
-    public function match(RequestInterface $request)
+    public function match(\Magento\Framework\App\RequestInterface $request)
     {
-        $url_key = trim($request->getPathInfo(), DIRECTORY_SEPARATOR. self::BLOG_NAME. DIRECTORY_SEPARATOR);
+        $url_key = trim($request->getPathInfo(), '/blog/');
         $url_key = rtrim($url_key, '/');
 
         /** @var \Bars\Blog\Model\Post $post */
@@ -91,8 +90,8 @@ class Router implements RouterInterface
             return null;
         }
 
-        $request->setModuleName(self::BLOG_NAME)->setControllerName('view')->setActionName('index')->setParam('post_id', $post_id);
-        $request->setAlias(Url::REWRITE_REQUEST_PATH_ALIAS, $url_key);
+        $request->setModuleName('blog')->setControllerName('view')->setActionName('index')->setParam('post_id', $post_id);
+        $request->setAlias(\Magento\Framework\Url::REWRITE_REQUEST_PATH_ALIAS, $url_key);
 
         return $this->actionFactory->create('Magento\Framework\App\Action\Forward');
     }

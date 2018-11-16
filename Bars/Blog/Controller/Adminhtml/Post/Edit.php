@@ -2,30 +2,34 @@
 namespace Bars\Blog\Controller\Adminhtml\Post;
 
 use Magento\Backend\App\Action;
+use Magento\Backend\App\Action\Context;
+use Magento\Framework\Registry;
+use Magento\Framework\View\Result\PageFactory;
+use Bars\Blog\Model\Post;
 
 class Edit extends Action
 {
     /**
      * Core registry
      *
-     * @var \Magento\Framework\Registry
+     * @var Registry
      */
     protected $_coreRegistry = null;
 
     /**
-     * @var \Magento\Framework\View\Result\PageFactory
+     * @var PageFactory
      */
     protected $resultPageFactory;
 
     /**
-     * @param Action\Context $context
-     * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
-     * @param \Magento\Framework\Registry $registry
+     * @param Context $context
+     * @param PageFactory $resultPageFactory
+     * @param Registry $registry
      */
     public function __construct(
-        Action\Context $context,
-        \Magento\Framework\View\Result\PageFactory $resultPageFactory,
-        \Magento\Framework\Registry $registry
+        Context $context,
+        PageFactory $resultPageFactory,
+        Registry $registry
     ) {
         $this->resultPageFactory = $resultPageFactory;
         $this->_coreRegistry = $registry;
@@ -65,7 +69,7 @@ class Edit extends Action
     public function execute()
     {
         $id = $this->getRequest()->getParam('post_id');
-        $model = $this->_objectManager->create('Bars\Blog\Model\Post');
+        $model = $this->_objectManager->create(Post::class);
 
         if ($id) {
             $model->load($id);

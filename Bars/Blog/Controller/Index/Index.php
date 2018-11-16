@@ -3,6 +3,8 @@
 namespace Bars\Blog\Controller\Index;
 
 use \Magento\Framework\App\Action\Action;
+use Magento\Framework\App\Action\Context;
+use Magento\Framework\View\Result\PageFactory;
 
 class Index extends Action
 {
@@ -10,11 +12,12 @@ class Index extends Action
     protected $resultPageFactory;
 
     /**
-     * @param \Magento\Framework\App\Action\Context $context
-     * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
+     * @param Context $context
+     * @param PageFactory $resultPageFactory
      */
-    public function __construct(\Magento\Framework\App\Action\Context $context,
-                                \Magento\Framework\View\Result\PageFactory $resultPageFactory)
+    public function __construct(
+        Context $context,
+        PageFactory $resultPageFactory)
     {
         $this->resultPageFactory = $resultPageFactory;
         parent::__construct($context);
@@ -22,7 +25,7 @@ class Index extends Action
 
     /**
      * Blog Index, shows a list of recent posts (load layout).
-     * @return \Magento\Framework\View\Result\PageFactory
+     * @return PageFactory
      */
     public function execute()
     {

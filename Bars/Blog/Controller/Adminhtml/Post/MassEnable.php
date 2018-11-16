@@ -29,7 +29,9 @@ class MassEnable extends \Magento\Backend\App\Action
     private $postRepository;
 
     /**
+     * MassEnable constructor.
      * @param Context $context
+     * @param PostRepositoryInterface $postRepository
      * @param Filter $filter
      * @param CollectionFactory $collectionFactory
      */

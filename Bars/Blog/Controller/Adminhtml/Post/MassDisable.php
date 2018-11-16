@@ -29,7 +29,9 @@ class MassDisable extends \Magento\Backend\App\Action
     private $postRepository;
 
     /**
+     * MassDisable constructor.
      * @param Context $context
+     * @param PostRepositoryInterface $postRepository
      * @param Filter $filter
      * @param CollectionFactory $collectionFactory
      */

@@ -3,17 +3,20 @@
 namespace Bars\Blog\Controller\View;
 
 use \Magento\Framework\App\Action\Action;
+use Magento\Framework\App\Action\Context;
+use Magento\Framework\Controller\Result\ForwardFactory;
 
 class Index extends Action
 {
-    /** @var \Magento\Framework\Controller\Result\ForwardFactory */
+    /** @var ForwardFactory */
     protected $resultForwardFactory;
 
     /**
-     * @param \Magento\Framework\App\Action\Context $context
+     * @param Context $context
      */
-    public function __construct(\Magento\Framework\App\Action\Context $context,
-                                \Magento\Framework\Controller\Result\ForwardFactory $resultForwardFactory
+    public function __construct(
+        Context $context,
+        ForwardFactory $resultForwardFactory
     )
     {
         $this->resultForwardFactory = $resultForwardFactory;
