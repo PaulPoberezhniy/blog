@@ -1,4 +1,6 @@
-<?php namespace Bars\Blog\Model;
+<?php
+
+namespace Bars\Blog\Model;
 
 use Bars\Blog\Api\Data\PostInterface;
 use Magento\Framework\Data\Collection\AbstractDb;
@@ -167,7 +169,7 @@ class Post extends AbstractModel implements PostInterface, IdentityInterface
      */
     public function setId($id)
     {
-        return $this->setData(self::POST_ID, $id);
+        $this->setData(self::POST_ID, $id);
     }
 
     /**
@@ -175,7 +177,7 @@ class Post extends AbstractModel implements PostInterface, IdentityInterface
      */
     public function setUrlKey($url_key)
     {
-        return $this->setData(self::URL_KEY, $url_key);
+        $this->setData(self::URL_KEY, $url_key);
     }
 
     /**
@@ -183,7 +185,7 @@ class Post extends AbstractModel implements PostInterface, IdentityInterface
      */
     public function setTitle($title)
     {
-        return $this->setData(self::TITLE, $title);
+        $this->setData(self::TITLE, $title);
     }
 
     /**
@@ -191,7 +193,7 @@ class Post extends AbstractModel implements PostInterface, IdentityInterface
      */
     public function setContent($content)
     {
-        return $this->setData(self::CONTENT, $content);
+        $this->setData(self::CONTENT, $content);
     }
 
     /**
@@ -199,7 +201,7 @@ class Post extends AbstractModel implements PostInterface, IdentityInterface
      */
     public function setCreationTime($creation_time)
     {
-        return $this->setData(self::CREATION_TIME, $creation_time);
+        $this->setData(self::CREATION_TIME, $creation_time);
     }
 
     /**
@@ -207,7 +209,7 @@ class Post extends AbstractModel implements PostInterface, IdentityInterface
      */
     public function setUpdateTime($update_time)
     {
-        return $this->setData(self::UPDATE_TIME, $update_time);
+        $this->setData(self::UPDATE_TIME, $update_time);
     }
 
     /**
@@ -215,7 +217,7 @@ class Post extends AbstractModel implements PostInterface, IdentityInterface
      */
     public function setIsActive($is_active)
     {
-        return $this->setData(self::IS_ACTIVE, $is_active);
+        $this->setData(self::IS_ACTIVE, $is_active);
     }
 
 }

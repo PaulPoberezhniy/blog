@@ -2,21 +2,22 @@
 
 namespace Bars\Blog\Model\Post\Source;
 
+use Bars\Blog\Model\Post;
 use Magento\Framework\Data\OptionSourceInterface;
 
 class IsActive implements OptionSourceInterface
 {
     /**
-     * @var \Bars\Blog\Model\Post
+     * @var Post
      */
     protected $post;
 
     /**
      * Constructor
      *
-     * @param \Bars\Blog\Model\Post $post
+     * @param Post $post
      */
-    public function __construct(\Bars\Blog\Model\Post $post)
+    public function __construct(Post $post)
     {
         $this->post = $post;
     }

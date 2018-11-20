@@ -1,6 +1,10 @@
-<?php namespace Bars\Blog\Model\ResourceModel\Post;
+<?php
 
-class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
+namespace Bars\Blog\Model\ResourceModel\Post;
+
+use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
+
+class Collection extends AbstractCollection
 {
     /**
      * @var string

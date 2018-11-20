@@ -1,0 +1,13 @@
+<?php /** @var $block \Bars\Blog\Block\PostList */ ?>
+<h1><?php echo __('Last 5') ?></h1>
+<ul class="blog-links-list">
+    <?php $linksCounter = 0; ?>
+    <?php /** @var $post \Bars\Blog\Model\Post */ ?>
+    <?php foreach ($block->getPosts() as $post): ?>
+        <li class="blog-post-links-list-item">
+            <a href="<?php echo $post->getUrl() ?>"><?php echo $post->getTitle() ?></a>
+        </li>
+    <?php  $linksCounter++;
+            if ( $linksCounter >4 )  break; ?>
+    <?php endforeach; ?>
+</ul>

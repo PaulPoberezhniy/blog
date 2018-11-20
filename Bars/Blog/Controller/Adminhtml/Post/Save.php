@@ -2,9 +2,14 @@
 
 namespace Bars\Blog\Controller\Adminhtml\Post;
 
+use Bars\Blog\Api\Data\PostInterface;
 use Magento\Backend\App\Action;
 use Bars\Blog\Api\PostRepositoryInterface;
+use Magento\Backend\App\Action\Context;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
+use RuntimeException;
+use Exception;
 
 class Save extends Action
 {
@@ -16,11 +21,11 @@ class Save extends Action
 
     /**
      * Save constructor.
-     * @param Action\Context $context
+     * @param Context $context
      * @param PostRepositoryInterface $postRepository
      */
     public function __construct(
-        Action\Context $context,
+        Context $context,
         PostRepositoryInterface $postRepository
 )
     {
@@ -78,11 +83,11 @@ class Save extends Action
                     return $resultRedirect->setPath('*/*/edit', ['post_id' => $model->getId(), '_current' => true]);
                 }
                 return $resultRedirect->setPath('*/*/');
-            } catch (\Magento\Framework\Exception\LocalizedException $e) {
+            } catch (LocalizedException $e) {
                 $this->messageManager->addError($e->getMessage());
-            } catch (\RuntimeException $e) {
+            } catch (RuntimeException $e) {
                 $this->messageManager->addError($e->getMessage());
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 $this->messageManager->addException($e, __('Something went wrong while saving the post.'));
             }
 

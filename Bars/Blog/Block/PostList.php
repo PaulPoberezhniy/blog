@@ -3,6 +3,7 @@
 namespace Bars\Blog\Block;
 
 use Bars\Blog\Api\Data\PostInterface;
+use Bars\Blog\Model\Post;
 use Bars\Blog\Model\ResourceModel\Post\Collection as PostCollection;
 use Bars\Blog\Model\ResourceModel\Post\CollectionFactory;
 use Magento\Framework\DataObject\IdentityInterface;
@@ -54,7 +55,7 @@ class PostList extends Template implements IdentityInterface
      */
     public function getIdentities()
     {
-        return [\Bars\Blog\Model\Post::CACHE_TAG . '_' . 'list'];
+        return [Post::CACHE_TAG . '_' . 'list'];
     }
 
 }

@@ -54,7 +54,7 @@ interface PostInterface
     /**
      * Set title
      * @param string $title
-     * @return \Bars\Blog\Api\Data\PostInterface
+     * @return void
      */
     public function setTitle($title);
 
@@ -109,7 +109,6 @@ interface PostInterface
      * @return void
      */
     public function setIsActive($isActive);
-
 
     /**
      * Return full URL including base url.
